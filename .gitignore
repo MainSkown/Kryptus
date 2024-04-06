@@ -3,3 +3,6 @@
 
 #files
 config.cfg
+message.txt
+decrypted_message.txt
+encrypted_message.txt
