@@ -1,5 +1,5 @@
 import os.path
-
+import zlib
 from src.config_interpreter import read_config, create_config, config_path
 from src.encryption_engine import encrypt, decrypt
 
@@ -29,7 +29,7 @@ def main():
 
         match choice:
             case '1':
-                print('1. Use config')
+                print('1. Use config location and key')
                 print('2. User values')
                 choice = input('Enter your choice: ')
 
@@ -51,10 +51,13 @@ def main():
                 encrypted_text = encrypt(text, key)
                 # Save encrypted text
                 f = open(save_location, 'w')
-                f.write(encrypted_text)
+                if config['use_compression'] == 'True':
+                    f.write(zlib.compress(encrypted_text.encode()).hex())
+                else:
+                    f.write(encrypted_text)
                 f.close()
             case '2':
-                print('1. Use config')
+                print('1. Use config location and key')
                 print('2. User values')
                 choice = input('Enter your choice: ')
 
@@ -73,6 +76,8 @@ def main():
                         key = input('Enter key: ')
 
                 # Decrypt text
+                if config['use_compression'] == 'True':
+                    text = zlib.decompress(bytes.fromhex(text)).decode()
                 decrypted_text = decrypt(text, key)
                 # Save decrypted text
                 f = open(save_location, 'w')
