@@ -32,7 +32,7 @@ def encrypt(text: str, key: str) -> str:
         for i in range(3):
             encrypted_text += chr(simplify[i][0] % modulo_value)
             sum_of_division += math.floor(simplify[i][0] / modulo_value)
-        encrypted_text += chr(sum_of_division % modulo_value)
+        encrypted_text += chr(sum_of_division)
 
     return encrypted_text
 

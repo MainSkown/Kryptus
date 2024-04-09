@@ -25,13 +25,13 @@ def main():
         print('1. Encrypt message')
         print('2. Decrypt message')
         print('3. Exit')
-        choice = input('Enter your choice: ')
+        choice = input('#> ')
 
         match choice:
             case '1':
                 print('1. Use config location and key')
                 print('2. User values')
-                choice = input('Enter your choice: ')
+                choice = input('#> ')
 
                 text = ""
                 key = ""
@@ -51,7 +51,7 @@ def main():
                 encrypted_text = encrypt(text, key)
                 # Save encrypted text
                 f = open(save_location, 'w')
-                if config['use_compression'] == 'True':
+                if config['use-compression'] == 'True':
                     f.write(zlib.compress(encrypted_text.encode()).hex())
                 else:
                     f.write(encrypted_text)
@@ -59,7 +59,7 @@ def main():
             case '2':
                 print('1. Use config location and key')
                 print('2. User values')
-                choice = input('Enter your choice: ')
+                choice = input('#> ')
 
                 text = ""
                 key = ""
@@ -76,7 +76,7 @@ def main():
                         key = input('Enter key: ')
 
                 # Decrypt text
-                if config['use_compression'] == 'True':
+                if config['use-compression'] == 'True':
                     text = zlib.decompress(bytes.fromhex(text)).decode()
                 decrypted_text = decrypt(text, key)
                 # Save decrypted text

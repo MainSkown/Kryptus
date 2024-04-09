@@ -16,7 +16,7 @@ def create_config():
                          'file-location': './message.txt',
                          'encrypted-file-location': './encrypted_message.txt',
                          'decrypted-file-location': './decrypted_message.txt',
-                         'use_compression': 'False'}
+                         'use-compression': 'False'}
 
     with open(config_path, 'w') as configfile:
         config.write(configfile)
