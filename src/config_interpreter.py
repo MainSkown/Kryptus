@@ -15,8 +15,7 @@ def create_config():
     config['DEFAULT'] = {'key': '123456789aa',
                          'file-location': './message.txt',
                          'encrypted-file-location': './encrypted_message.txt',
-                         'decrypted-file-location': './decrypted_message.txt',
-                         'use-compression': 'False'}
+                         'decrypted-file-location': './decrypted_message.txt'}
 
     with open(config_path, 'w') as configfile:
         config.write(configfile)
