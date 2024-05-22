@@ -67,11 +67,13 @@ def main():
 
                 match choice:
                     case '1':
-                        text = open(config['encrypted-file-location'], 'r').read()
+                        with open(config['encrypted-file-location'], 'rb') as r_file:
+                            text = r_file.read().decode()
                         save_location = config['decrypted-file-location']
                         key = config['key']
                     case '2':
-                        text = open(input('Enter file location: '), 'r').read()
+                        with open(input('Enter file location: '), 'rb') as r_file:
+                            text = r_file.read().decode()
                         save_location = input('Enter save location: ')
                         key = input('Enter key: ')
 
